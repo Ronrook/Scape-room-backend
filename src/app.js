@@ -3,12 +3,13 @@ import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
 
+const app = express()
+
 import pkg from "../package.json";
 
 // Settings
 app.set("pkg", pkg);
-app.set("port", process.env.PORT || 4000);
-app.set("json spaces", 4);
+
 
 
 app.get("/", (req, res) => {
@@ -20,3 +21,6 @@ app.get("/", (req, res) => {
       author: app.get("pkg").author,
     });
   });
+
+
+  export default app;

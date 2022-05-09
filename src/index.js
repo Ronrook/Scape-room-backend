@@ -1,4 +1,4 @@
+import app from './app'
 
-import express from "express"
-const app = express()
-console.log("servidor en puerto", 3000)
+app.listen(4000)
+console.log("servidor en puerto", 4000)
