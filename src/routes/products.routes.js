@@ -3,17 +3,18 @@ const router = Router();
 
 import * as productsCtrl from "../controllers/products.controller";
 
-import {verifyToken} from '../middlewares'
+import { authJwt } from "../middlewares";
+
 
 router.get('/', productsCtrl.getProducts)
 
 router.get("/:productId", productsCtrl.getProductById);
 
-router.post("/", verifyToken , productsCtrl.createProduct);
+router.post("/", [ authJwt.verifyToken, authJwt.isModerator] , productsCtrl.createProduct);
 
-router.put("/:productId", verifyToken, productsCtrl.updateProductById);
+router.put("/:productId", authJwt.verifyToken, productsCtrl.updateProductById);
 
-router.delete("/:productId", verifyToken, productsCtrl.deleteProductById);
+router.delete("/:productId", authJwt.verifyToken, productsCtrl.deleteProductById);
 
 
 export default router;
