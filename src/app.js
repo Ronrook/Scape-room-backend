@@ -17,7 +17,7 @@ const app = express()
 createRoles()
 
 
-//middlewares
+
 app.use(morgan("dev"));
 app.use(express.json());
 
