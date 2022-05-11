@@ -1,4 +1,12 @@
+import { config } from "dotenv";
+config()
+
+
+
+
 export default {
 
-    SECRET: 'scape-admin' 
+    MONGODB_URI: process.env.MONGODB_URI,
+    PORT: process.env.PORT || 4000,
+    SECRET: process.env.SECRET_API
 }

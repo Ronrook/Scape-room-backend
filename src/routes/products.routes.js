@@ -6,15 +6,15 @@ import * as productsCtrl from "../controllers/products.controller";
 import { authJwt } from "../middlewares";
 
 
-router.get('/', productsCtrl.getProducts)
+router.get('/', [authJwt.verifyToken], productsCtrl.getProducts)
 
-router.get("/:productId", productsCtrl.getProductById);
+router.get("/:productId", [authJwt.verifyToken], productsCtrl.getProductById);
 
-router.post("/", [ authJwt.verifyToken, authJwt.isModerator] , productsCtrl.createProduct);
+router.post("/", [ authJwt.verifyToken, authJwt.isAdmin] , productsCtrl.createProduct);
 
-router.put("/:productId", authJwt.verifyToken, productsCtrl.updateProductById);
+router.put("/:productId", [authJwt.verifyToken, authJwt.isAdmin], productsCtrl.updateProductById);
 
-router.delete("/:productId", authJwt.verifyToken, productsCtrl.deleteProductById);
+router.delete("/:productId", [authJwt.verifyToken, authJwt.isAdmin], productsCtrl.deleteProductById);
 
 
 export default router;

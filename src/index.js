@@ -1,5 +1,5 @@
 import app from './app'
 import './database'
 
-app.listen(4000)
-console.log("servidor en puerto", 4000)
+app.listen(app.get("port"))
+console.log("servidor en puerto", app.get('port'))
