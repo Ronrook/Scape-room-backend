@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js --exec babel-node",
     "build": "babel src --out-dir build",
-    "dev": "node build/index.js",
+    "dev": "nodemon build/index.js",
     "test": "jest"
   },
   "repository": {
@@ -35,7 +35,6 @@
     "@babel/preset-env": "^7.17.10",
     "nodemon": "^2.0.16"
   },
-
   "devDependencies": {
     "@babel/cli": "^7.17.10",
     "@babel/core": "^7.17.10",
