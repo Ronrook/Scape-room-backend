@@ -8,6 +8,9 @@ export const createUser = (req, res) => {
 } 
 
 
+
+
+
 export const getUserByToken = async (req, res) => {
     try {
         const token = req.headers["x-access-token"];
