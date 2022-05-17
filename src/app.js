@@ -13,7 +13,10 @@ import usersRoutes from "./routes/user.routers"
 
 
 
+
 const app = express()
+
+app.use(cors({origin: "*"}))
 createRoles()
 
 
