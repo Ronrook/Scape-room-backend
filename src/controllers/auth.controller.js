@@ -4,9 +4,10 @@ import config from '../config'
 import Role from '../models/Role';
 
 export const signUp = async (req, res) =>{
-    const { username, email, password, roles } = req.body;
+    const { name, username, email, password, roles } = req.body;
 
     const newUser = new User({
+        name, 
         username,
         email,
         password: await User.encryptPassword(password)
