@@ -5,17 +5,17 @@ import Role from '../models/Role';
 const createPassword = require('../libs/createPassword')
 
 export const signUp = async (req, res) =>{
+    const clave = createPassword()
     const { name, username, email, roles } = req.body;
 
     const newUser = new User({
         name, 
         username,
         email,
+        password: await User.encryptPassword(clave)
     })
 
 
-    const clave = createPassword()
-    
 
     if (roles){
         const foundRoles = await Role.find({name: {$in: roles}})
@@ -31,22 +31,7 @@ export const signUp = async (req, res) =>{
         username: newUser.username,
         email: newUser.email,
         password: clave
-
     } 
-
-
-    try {
-        console.log('prueba try')
-        newUser.password = await User.encryptPassword(clave)
-        console.log('despues de try')
-        
-        
-    } catch (error) {
-        console.log('prueba catch')
-        return res.status(401).json({message: 'no se puede'})
-        
-    }
-    
 
     await newUser.save();
 
@@ -54,9 +39,8 @@ export const signUp = async (req, res) =>{
     //     expiresIn: 3600 // 1 hora
     // } )
 
-    const id = savedUser._id
-    // const user =  await User.findById(id, {_id: 0, createdAt: 0, updatedAt: 0})
-
+    
+    
     res.status(200).json(user)
 
 }
@@ -76,9 +60,6 @@ export const signin = async (req, res) =>{
     const token =  jwt.sign({id: userFound._id}, config.SECRET, {
         expiresIn: 3600 // 1 hora
     } )
-
-    const clave = createPassword(8, true)
-    console.log(clave)
 
 
     res.status(200).json({token})
