@@ -43,6 +43,7 @@ export const signUp = async (req, res) =>{
     res.status(200).json(user)
 }
 
+
 export const signin = async (req, res) =>{
     const { email, password } = req.body;
 
