@@ -40,19 +40,6 @@ export const getUserById = async (req, res) => {
 };
 
 
-export const getAllUsers = async (req, res) => {
-    const user = '6283d02f50ac8e92a7bd50e5'
-    const users = await User.find({roles: [user]});
-    return res.json(users);
-
-};
-
-export const getAllAdmins = async (req, res) => {
-    const admin = '6283d02f50ac8e92a7bd50e6'
-    const admins = await User.find({roles: [admin]});
-    return res.json(admins);
-
-};
 
 
 export const updateUserById = async (req, res) => {
@@ -77,3 +64,18 @@ export const deleteUserById = async (req, res) => {
     res.status(204).json({message: 'Usuario eliminado'});
 
 };
+
+
+export const allUsers = async (req, res) => {
+    const user = '6283d02f50ac8e92a7bd50e5'
+    const users = await User.find({roles: [user]});
+    return res.json(users);
+
+    
+}
+
+export const allAdmins = async (req, res) => {
+    const admin = '6283d02f50ac8e92a7bd50e6'
+    const admins = await User.findOne({roles: [admin]});
+    return res.json(admins);
+}

@@ -6,16 +6,17 @@ import * as userCtrl from '../controllers/user.controller'
 import {authJwt, verifySignup} from '../middlewares'
 
 router.get('/getuser', [authJwt.verifyToken], userCtrl.getUserByToken)
+router.get('/allusers', [authJwt.verifyToken], userCtrl.allUsers)
 
-router.get('/:userId', [authJwt.verifyToken, authJwt.isAdmin ], userCtrl.getUserById)
+router.get('/alladmins', [authJwt.verifyToken], userCtrl.allAdmins)
 
-router.get('/getusers', [authJwt.verifyToken, authJwt.isAdmin ], userCtrl.getAllUsers)
+router.get('/:userId', [authJwt.verifyToken, authJwt.isAdmin ], userCtrl.getUserById);
 
-router.get('/getadmins', [authJwt.verifyToken, authJwt.isAdmin ], userCtrl.getAllAdmins)
 
-router.put('/:userId', [authJwt.verifyToken, authJwt.isAdmin ], userCtrl.updateUserById)
 
-router.delete("/:userId", [authJwt.verifyToken, authJwt.isAdmin], userCtrl. deleteUserById);
+router.put('/:userId', [authJwt.verifyToken, authJwt.isAdmin ], userCtrl.updateUserById);
+
+router.delete("/:userId", [authJwt.verifyToken, authJwt.isAdmin], userCtrl.deleteUserById);
 
 
 // router.post('/', [authJwt.verifyToken, authJwt.isAdmin, verifySignup.checkRolesExisted], userCtrl.createUser)
