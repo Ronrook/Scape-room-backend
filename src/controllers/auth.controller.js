@@ -5,14 +5,14 @@ import Role from '../models/Role';
 const createPassword = require('../libs/createPassword')
 
 export const signUp = async (req, res) =>{
-    const clave = createPassword()
+    const passwordRandom = createPassword()
     const { name, username, email, roles } = req.body;
 
     const newUser = new User({
         name, 
         username,
         email,
-        password: await User.encryptPassword(clave)
+        password: await User.encryptPassword(passwordRandom)
     })
 
 
@@ -30,7 +30,7 @@ export const signUp = async (req, res) =>{
     const user = {
         username: newUser.username,
         email: newUser.email,
-        password: clave
+        password: passwordRandom
     } 
 
     await newUser.save();
