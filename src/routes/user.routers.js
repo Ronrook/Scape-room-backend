@@ -7,9 +7,9 @@ import {authJwt, verifySignup} from '../middlewares'
 
 router.get('/getuser', [authJwt.verifyToken], userCtrl.getUserByToken)
 
-router.get('/allusers', [authJwt.verifyToken], userCtrl.allUsers)
+router.get('/allusers', [authJwt.verifyToken, authJwt.isAdmin], userCtrl.allUsers)
 
-router.get('/alladmins', [authJwt.verifyToken], userCtrl.allAdmins)
+router.get('/alladmins', [authJwt.verifyToken, authJwt.isAdmin], userCtrl.allAdmins)
 
 router.get('/:userId', [authJwt.verifyToken, authJwt.isAdmin ], userCtrl.getUserById);
 
