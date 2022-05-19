@@ -73,6 +73,7 @@ export const allUsers = async (req, res) => {
     
 }
 
+
 export const allAdmins = async (req, res) => {
     const admin = '6283d02f50ac8e92a7bd50e6'
     const admins = await User.findOne({roles: [admin]});
