@@ -6,13 +6,12 @@ import * as userCtrl from '../controllers/user.controller'
 import {authJwt, verifySignup} from '../middlewares'
 
 router.get('/getuser', [authJwt.verifyToken], userCtrl.getUserByToken)
+
 router.get('/allusers', [authJwt.verifyToken], userCtrl.allUsers)
 
 router.get('/alladmins', [authJwt.verifyToken], userCtrl.allAdmins)
 
 router.get('/:userId', [authJwt.verifyToken, authJwt.isAdmin ], userCtrl.getUserById);
-
-
 
 router.put('/:userId', [authJwt.verifyToken, authJwt.isAdmin ], userCtrl.updateUserById);
 
