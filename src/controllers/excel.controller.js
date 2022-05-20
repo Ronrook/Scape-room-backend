@@ -25,10 +25,7 @@ export const getExcel = async (req, res) => {
             res.redirect('/');  
         }  
         }); 
-    
 }
-    
-    
 
 
 
