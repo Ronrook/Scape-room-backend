@@ -18,6 +18,15 @@ export const getExcel = async (req, res) => {
     const nombreHoja = excel.SheetNames; //esto me regresa un array
     const datos = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
     console.log(datos);
+    
+    // datos.forEach(user => {
+    //     console.log('prueba')
+    //     user.roles.split(" ")
+        
+    // });
+
+    console.log(datos);
+
     User.insertMany(datos,(err,data)=>{  
         if(err){  
             console.log(err);  
@@ -25,11 +34,7 @@ export const getExcel = async (req, res) => {
             res.redirect('/');  
         }  
         }); 
-    
 }
-    
-    
-
 
 
 
