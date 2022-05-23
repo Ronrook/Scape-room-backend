@@ -6,8 +6,8 @@ const sendEmail = require('../libs/sendEmail')
 
 export const saveDataExcel = async (req, res) => {
     // const {urlExcel} = req.body;
-    
-    
+
+
     const excel = XLSX.readFile(
         
         'D:/Desktop/scape_room_backend/src/usuarios.xlsx'
@@ -16,6 +16,7 @@ export const saveDataExcel = async (req, res) => {
     const nombreHoja = excel.SheetNames; 
     const datos = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
 
+    
     try {
 
         datos.forEach(async user => {
