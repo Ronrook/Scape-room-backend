@@ -8,10 +8,11 @@ try {
     await transporter.sendMail({
     from: '"Fred Foo" <jdquimbayo72@misena.edu.co>', // sender address
     to: email, // list of receivers
-    subject: "Bienvenido a Scape Room ✔", // Subject line
-    html: `Hola ${username} tus credenciales de acceso son  
+    subject: "Hello ✔", // Subject line
+    text: `Hola ${username} tus credenciales de acceso son  
     email:${email} 
-    passsword:${password}`, // html body
+    passsword:${password}`, // plain text body
+    html: "<b>Hello world?</b>", // html body
     })
         
     } catch (error) {
@@ -20,5 +21,6 @@ try {
     }
 
 }
+
 
 module.exports = sendEmail
