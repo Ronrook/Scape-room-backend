@@ -3,10 +3,10 @@ const XLSX = require('xlsx');
 import {  createUser }  from '../controllers/user.controller'
 import User from '../models/User';
 import Role from '../models/Role';
+import {  validateCreateuser }  from '../middlewares/verifySignup'
 
 
-
-export const getExcel = async (req, res) => {
+export const saveDataExcel = async (req, res) => {
     // const {urlExcel} = req.body;
     
     
@@ -19,12 +19,16 @@ export const getExcel = async (req, res) => {
     const datos = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
 
     try {
-        console.log('dentro de try')
 
         datos.forEach(async user => {
-            
-            const userSave = await  createUser(user)
-            console.log(userSave)
+
+            const respuesta = await validateCreateuser(user)
+            console.log(respuesta)
+
+            if (!respuesta) {
+                const userSave = await  createUser(user)
+                console.log(userSave)
+            }
         });
         
     } catch (error) {

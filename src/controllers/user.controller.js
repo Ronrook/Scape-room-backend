@@ -3,7 +3,7 @@ import config from '../config'
 import User from '../models/User';
 import Role from '../models/Role';
 const createPassword = require('../libs/createPassword')
-
+import {  validateCreateuser }  from '../middlewares/'
 
 
 // export const createUser = (req, res) => {
@@ -43,9 +43,6 @@ export const createUser = async (req, res) =>{
 
     await newUser.save();
 
-    // const token =  jwt.sign({id: savedUser._id}, config.SECRET, {
-    //     expiresIn: 3600 // 1 hora
-    // } )
     return user
     
 }

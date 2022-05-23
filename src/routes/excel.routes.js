@@ -6,7 +6,7 @@ import { authJwt } from "../middlewares";
 
 
 
-router.post('/', [authJwt.verifyToken], excelCtrl.getExcel)
+router.post('/', [authJwt.verifyToken, authJwt.isAdmin], excelCtrl.saveDataExcel)
 
 
 export default router;
