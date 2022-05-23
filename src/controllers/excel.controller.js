@@ -5,28 +5,24 @@ import {  validateCreateuser }  from '../middlewares/verifySignup'
 const sendEmail = require('../libs/sendEmail')
 
 export const saveDataExcel = async (req, res) => {
-    // const {data} = req.body
+    // const {urlExcel} = req.body;
 
-    
-    
+
     const excel = XLSX.readFile(
         
         'D:/Desktop/scape_room_backend/src/usuarios.xlsx'
     );
 
     const nombreHoja = excel.SheetNames; 
-    const data = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
-
-
+    const datos = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
 
     
     try {
 
-        data.forEach(async user => {
+        datos.forEach(async user => {
 
             const respuesta = await validateCreateuser(user)
-            
-            
+            console.log(respuesta)
 
             if (!respuesta) {
                 const userSave = await  createUser(user)
