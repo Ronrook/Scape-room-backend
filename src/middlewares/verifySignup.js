@@ -3,6 +3,7 @@ import User from '../models/User'
 
 
 export const checkDuplicateUsernameOrEmail = async (req, res, next) => {
+
     try {
         const user = await User.findOne({ username: req.body.username });
         if (user)
@@ -34,3 +35,19 @@ export const checkRolesExisted = (req, res, next) => {
     
         next();
 };
+
+
+export const validateCreateuser = async (req, res,) => {
+    if(req.username && req.email) {
+        const user = await User.findOne({
+            $or: [
+                { username: req.username },
+                { email: req.email }
+            ]
+        });
+        
+        if(user) {
+            return    'Username y email ya existen';
+        }
+    }
+}

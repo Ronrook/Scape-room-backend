@@ -12,8 +12,15 @@ import authRoutes from "./routes/auth.routes";
 import usersRoutes from "./routes/user.routers"
 
 
+import excelRoutes from "./routes/excel.routes";
+
+
+
+
 
 const app = express()
+
+app.use(cors({origin: "*"}))
 createRoles()
 
 
@@ -40,5 +47,6 @@ app.get("/", (req, res) => {
 app.use('/api/products', productRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/users', usersRoutes)
+app.use('/api/excel', excelRoutes)
 
 export default app;

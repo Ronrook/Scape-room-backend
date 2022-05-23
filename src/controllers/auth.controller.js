@@ -2,16 +2,19 @@ import User from '../models/User'
 import jwt from 'jsonwebtoken'
 import config from '../config'
 import Role from '../models/Role';
+const createPassword = require('../libs/createPassword')
 
 export const signUp = async (req, res) =>{
-    const { username, email, password, roles } = req.body;
+    const passwordRandom = createPassword()
+    const { name, username, email, roles } = req.body;
 
     const newUser = new User({
+        name, 
         username,
         email,
-        password: await User.encryptPassword(password)
-
+        password: await User.encryptPassword(passwordRandom)
     })
+
 
 
     if (roles){
@@ -23,18 +26,22 @@ export const signUp = async (req, res) =>{
     }
 
 
-    const savedUser =  await newUser.save();
 
-    const token =  jwt.sign({id: savedUser._id}, config.SECRET, {
-        expiresIn: 3600 // 1 hora
-    } )
+    const user = {
+        username: newUser.username,
+        email: newUser.email,
+        password: passwordRandom
+    } 
 
-    res.status(200).json({token})
+    await newUser.save();
 
+    res.status(200).json(user)
 }
+
 
 export const signin = async (req, res) =>{
     const { email, password } = req.body;
+    
 
     const userFound = await User.findOne({email: email}).populate("roles");
 
@@ -48,6 +55,7 @@ export const signin = async (req, res) =>{
     const token =  jwt.sign({id: userFound._id}, config.SECRET, {
         expiresIn: 3600 // 1 hora
     } )
+
 
     res.status(200).json({token})
 }
