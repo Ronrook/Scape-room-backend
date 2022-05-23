@@ -7,11 +7,6 @@ const sendEmail = require('../libs/sendEmail')
 export const saveDataExcel = async (req, res) => {
     const {urlExcel} = req.body
 
-    if (req.body) {
-        console.log('prueba de body')
-        console.log(urlExcel)
-        
-    }
     
     
     const excel = XLSX.readFile(
