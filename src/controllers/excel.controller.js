@@ -13,7 +13,7 @@ export const saveDataExcel = async (req, res) => {
         'D:/Desktop/scape_room_backend/src/usuarios.xlsx'
     );
 
-    const nombreHoja = excel.SheetNames; //esto me regresa un array
+    const nombreHoja = excel.SheetNames; 
     const datos = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
 
     try {
@@ -37,20 +37,8 @@ export const saveDataExcel = async (req, res) => {
         
     }
 
-    res.status(200).json('hecho')
-
-    
-    // res.status(200).json(newUser);
-
-    // User.insertMany(datos,(err,data)=>{  
-    //     if(err){  
-    //         console.log(err);  
-    //     }else{  
-    //         res.redirect('/');  
-    //     }  
-    //     }); 
+    res.status(200).json('hecho'); 
 }
-
 
 
 
