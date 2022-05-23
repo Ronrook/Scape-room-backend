@@ -1,38 +1,36 @@
-import { Schema, model } from "mongoose";
+import {
+    Schema,
+    model
+} from "mongoose";
 import bcrypt from "bcryptjs";
 
 
 
-const userSchema = new Schema(
-    {
-        name: {
+const userSchema = new Schema({
+    name: {
         type: String,
         required: true,
-        
-        },
-        username: {
-        type: String,
-        unique: true,
-        },
-        email: {
-        type: String,
-        unique: true,
-        },
-        password: {
-        type: String
-        },
-        roles: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Role",
-        },
-        ],
+
     },
-    {
-        timestamps: true,
-        versionKey: false,
-    }
-);
+    username: {
+        type: String,
+        unique: true,
+    },
+    email: {
+        type: String,
+        unique: true,
+    },
+    password: {
+        type: String
+    },
+    roles: [{
+        type: Schema.Types.ObjectId,
+        ref: "Role",
+    }, ],
+}, {
+    timestamps: true,
+    versionKey: false,
+});
 
 userSchema.statics.encryptPassword = async (password) => {
     const salt = await bcrypt.genSalt(10);
