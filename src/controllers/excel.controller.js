@@ -1,10 +1,8 @@
 
 const XLSX = require('xlsx');
 import {  createUser }  from '../controllers/user.controller'
-import User from '../models/User';
-import Role from '../models/Role';
 import {  validateCreateuser }  from '../middlewares/verifySignup'
-
+const sendEmail = require('../libs/sendEmail')
 
 export const saveDataExcel = async (req, res) => {
     // const {urlExcel} = req.body;
@@ -23,11 +21,13 @@ export const saveDataExcel = async (req, res) => {
         datos.forEach(async user => {
 
             const respuesta = await validateCreateuser(user)
-            console.log(respuesta)
+            
 
             if (!respuesta) {
                 const userSave = await  createUser(user)
                 console.log(userSave)
+                const resEmail = sendEmail(userSave)
+                console.log(resEmail)
             }
         });
         
@@ -37,6 +37,7 @@ export const saveDataExcel = async (req, res) => {
         
     }
 
+    res.status(200).json('hecho')
 
     
     // res.status(200).json(newUser);
