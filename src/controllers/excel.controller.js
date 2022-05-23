@@ -5,7 +5,8 @@ import {  validateCreateuser }  from '../middlewares/verifySignup'
 const sendEmail = require('../libs/sendEmail')
 
 export const saveDataExcel = async (req, res) => {
-    // const {urlExcel} = req.body;
+    // const {data} = req.body
+
     
     
     const excel = XLSX.readFile(
@@ -14,13 +15,16 @@ export const saveDataExcel = async (req, res) => {
     );
 
     const nombreHoja = excel.SheetNames; 
-    const datos = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
+    const data = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
+
+
 
     try {
 
-        datos.forEach(async user => {
+        data.forEach(async user => {
 
             const respuesta = await validateCreateuser(user)
+            
             
 
             if (!respuesta) {
