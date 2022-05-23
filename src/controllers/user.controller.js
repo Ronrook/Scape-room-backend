@@ -3,15 +3,10 @@ import config from '../config'
 import User from '../models/User';
 import Role from '../models/Role';
 const createPassword = require('../libs/createPassword')
-import {  validateCreateuser }  from '../middlewares/'
 
 
-// export const createUser = (req, res) => {
-//     res.json('usuario creado')
-// } 
 
 export const createUser = async (req, res) =>{
-
 
     const passwordRandom = createPassword()
     const { name, username, email, roles } = req

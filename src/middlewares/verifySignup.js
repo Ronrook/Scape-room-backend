@@ -48,9 +48,6 @@ export const validateCreateuser = async (req, res,) => {
         
         if(user) {
             return    'Username y email ya existen';
-        }else{
-            return    'Usuario validado';
-
         }
     }
 }
