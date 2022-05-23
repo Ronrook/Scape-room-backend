@@ -35,15 +35,13 @@ export const signUp = async (req, res) =>{
 
     await newUser.save();
 
-    // const token =  jwt.sign({id: savedUser._id}, config.SECRET, {
-    //     expiresIn: 3600 // 1 hora
-    // } )
     res.status(200).json(user)
 }
 
 
 export const signin = async (req, res) =>{
     const { email, password } = req.body;
+    
 
     const userFound = await User.findOne({email: email}).populate("roles");
 

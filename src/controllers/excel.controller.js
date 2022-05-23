@@ -1,14 +1,14 @@
 
 const XLSX = require('xlsx');
-import  createUser from '../controllers/user.controller'
+import {  createUser }  from '../controllers/user.controller'
 import User from '../models/User';
+import Role from '../models/Role';
+import {  validateCreateuser }  from '../middlewares/verifySignup'
 
 
-
-
-export const getExcel = async (req, res) => {
-    const {urlExcel} = req.body;
-    console.log(urlExcel);
+export const saveDataExcel = async (req, res) => {
+    // const {urlExcel} = req.body;
+    
     
     const excel = XLSX.readFile(
         
@@ -17,23 +17,37 @@ export const getExcel = async (req, res) => {
 
     const nombreHoja = excel.SheetNames; //esto me regresa un array
     const datos = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
-    console.log(datos);
-    
-    // datos.forEach(user => {
-    //     console.log('prueba')
-    //     user.roles.split(" ")
+
+    try {
+
+        datos.forEach(async user => {
+
+            const respuesta = await validateCreateuser(user)
+            console.log(respuesta)
+
+            if (!respuesta) {
+                const userSave = await  createUser(user)
+                console.log(userSave)
+            }
+        });
         
-    // });
+    } catch (error) {
+        
+        return res.status(401).json({message: 'error en la carga de datos'})
+        
+    }
 
-    console.log(datos);
 
-    User.insertMany(datos,(err,data)=>{  
-        if(err){  
-            console.log(err);  
-        }else{  
-            res.redirect('/');  
-        }  
-        }); 
+    
+    // res.status(200).json(newUser);
+
+    // User.insertMany(datos,(err,data)=>{  
+    //     if(err){  
+    //         console.log(err);  
+    //     }else{  
+    //         res.redirect('/');  
+    //     }  
+    //     }); 
 }
 <<<<<<< HEAD
 
