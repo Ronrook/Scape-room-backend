@@ -15,7 +15,7 @@ export const saveDataExcel = async (req, res) => {
 
     // const nombreHoja = excel.SheetNames; 
     // const datos = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
-    // console.log(datos)
+    console.log(data)
 
 
 
