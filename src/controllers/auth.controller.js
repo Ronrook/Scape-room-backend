@@ -77,7 +77,6 @@ export const signin = async (req, res) =>{
         expiresIn: 3600 // 1 hora
         } )
 
-
         res.status(200).json({token})
     }
 
