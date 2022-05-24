@@ -51,7 +51,7 @@ export const getUserByToken = async (req, res) => {
         if (!token) return res.status(403).json({message: 'No se proporcionó token'})
 
         const decoded = jwt.verify(token, config.SECRET)
-        // console.log(decoded)
+        
         req.userId = decoded.id;
 
 

@@ -10,7 +10,29 @@ const userSchema = new Schema({
     name: {
         type: String,
         required: true,
-
+        
+        },
+        username: {
+        type: String,
+        unique: true,
+        },
+        email: {
+        type: String,
+        unique: true,
+        },
+        password: {
+        type: String
+        },
+        isLoggedIn: {
+        type: Boolean,
+        default: false
+        },
+        roles: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Role",
+        },
+        ],
     },
     username: {
         type: String,

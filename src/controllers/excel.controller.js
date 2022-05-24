@@ -1,32 +1,23 @@
-
-const XLSX = require('xlsx');
-import {  createUser }  from '../controllers/user.controller'
 import {  validateCreateuser }  from '../middlewares/verifySignup'
+import {  createUser }  from '../controllers/user.controller'
 const sendEmail = require('../libs/sendEmail')
 
 export const saveDataExcel = async (req, res) => {
-    // const {urlExcel} = req.body;
+    const data = req.body;
+
     
     
-    const excel = XLSX.readFile(
-        
-        'D:/Desktop/scape_room_backend/src/usuarios.xlsx'
-    );
-
-    const nombreHoja = excel.SheetNames; 
-    const datos = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
-
     try {
 
-        datos.forEach(async user => {
+        data.forEach(async user => {
 
-            const respuesta = await validateCreateuser(user)
-            
+            const verify = await validateCreateuser(user)
+            console.log(verify)
 
-            if (!respuesta) {
-                const userSave = await  createUser(user)
-                console.log(userSave)
-                const resEmail = sendEmail(userSave)
+            if (!verify) {
+                const newUser = await  createUser(user)
+                console.log(newUser)
+                const resEmail = sendEmail(newUser)
                 console.log(resEmail)
             }
         });
@@ -36,7 +27,8 @@ export const saveDataExcel = async (req, res) => {
         return res.status(401).json({message: 'error en la carga de datos'})
         
     }
-
+    
+    
     res.status(200).json('hecho'); 
 }
 
