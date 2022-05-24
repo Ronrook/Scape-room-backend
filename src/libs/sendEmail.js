@@ -9,9 +9,9 @@ try {
     from: '"Scape room Educamás" <jdquimbayo72@misena.edu.co>', // sender address
     to: email, // list of receivers
     subject: "Bienvenido a Scape room Educamás ✔", // Subject line
-    html: `<h2> </h2>Hola ${username} tus credenciales de acceso son <br>  
+    html: `<h2> Hola ${username} tus credenciales de acceso son <br>  
     email:${email}<br> 
-    passsword:${password}</h2>` // html body
+    passsword: ${password}</h2>` // html body
     })
         
     } catch (error) {
