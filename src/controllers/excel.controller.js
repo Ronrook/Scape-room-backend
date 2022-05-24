@@ -5,17 +5,20 @@ import {  validateCreateuser }  from '../middlewares/verifySignup'
 const sendEmail = require('../libs/sendEmail')
 
 export const saveDataExcel = async (req, res) => {
-    // const {data} = req.body
+    const {data} = req.body
+
+    // console.log(req.body
+    //     )
 
     
     
-    const excel = XLSX.readFile(
+    // const excel = XLSX.readFile(
         
-        'D:/Desktop/scape_room_backend/src/usuarios.xlsx'
-    );
+    //     'D:/Desktop/scape_room_backend/src/usuarios.xlsx'
+    // );
 
-    const nombreHoja = excel.SheetNames; 
-    const data = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
+    // const nombreHoja = excel.SheetNames; 
+    // const data = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
 
 
 

@@ -1,5 +1,5 @@
 import express from "express";
-import cors from "cors";
+const cors = require("cors"); 
 import morgan from "morgan";
 import config from "./config";
 
@@ -20,7 +20,7 @@ import excelRoutes from "./routes/excel.routes";
 
 const app = express()
 
-app.use(cors({origin: "*"}))
+app.use(cors())
 createRoles()
 
 

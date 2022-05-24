@@ -21,6 +21,10 @@ const userSchema = new Schema(
         password: {
         type: String
         },
+        isLoggedIn: {
+        type: Boolean,
+        default: false
+        },
         roles: [
         {
             type: Schema.Types.ObjectId,
