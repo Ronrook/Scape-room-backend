@@ -10,7 +10,6 @@ const userSchema = new Schema({
     name: {
         type: String,
         required: true,
-        
         },
         username: {
         type: String,
@@ -34,22 +33,7 @@ const userSchema = new Schema({
         },
         ],
     },
-    username: {
-        type: String,
-        unique: true,
-    },
-    email: {
-        type: String,
-        unique: true,
-    },
-    password: {
-        type: String
-    },
-    roles: [{
-        type: Schema.Types.ObjectId,
-        ref: "Role",
-    }, ],
-}, {
+    {
     timestamps: true,
     versionKey: false,
 });
