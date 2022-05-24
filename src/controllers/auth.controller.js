@@ -59,13 +59,15 @@ export const signin = async (req, res) =>{
 
 
     // const role = await Role.find({_id: {$in: userFound.roles}})
-
+    // // console.log(userFound.isLoggedIn)
     // if (!userFound.isLoggedIn) {
 
 
     //     if(role[0].name === 'user'){
     //             userFound.isLoggedIn = true
+    //             userFound.save();
     //             console.log('es un usuario')
+    //             console.log(userFound.isLoggedIn)
 
     //     }
 

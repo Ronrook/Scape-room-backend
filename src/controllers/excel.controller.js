@@ -5,10 +5,10 @@ import {  validateCreateuser }  from '../middlewares/verifySignup'
 const sendEmail = require('../libs/sendEmail')
 
 export const saveDataExcel = async (req, res) => {
-    const {data} = req.body
+    const data = req.body
 
-    // console.log(req.body
-    //     )
+    console.log(req.body
+        )
 
     
     
