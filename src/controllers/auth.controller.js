@@ -51,11 +51,37 @@ export const signin = async (req, res) =>{
 
     if (!matchPassword) return res.status(401).json({token: null, message: 'password invalido'})
 
-
     const token =  jwt.sign({id: userFound._id}, config.SECRET, {
         expiresIn: 3600 // 1 hora
     } )
 
 
     res.status(200).json({token})
+
+
+    // const role = await Role.find({_id: {$in: userFound.roles}})
+    // // console.log(userFound.isLoggedIn)
+    // if (!userFound.isLoggedIn) {
+
+
+    //     if(role[0].name === 'user'){
+    //             userFound.isLoggedIn = true
+    //             userFound.save();
+    //             console.log('es un usuario')
+    //             console.log(userFound.isLoggedIn)
+
+    //     }
+
+    //     const token =  jwt.sign({id: userFound._id}, config.SECRET, {
+    //     expiresIn: 3600 // 1 hora
+    //     } )
+
+
+    //     res.status(200).json({token})
+    // }
+
+
+    // if (userFound.isLoggedIn) return res.status(401).json({token: null, message: 'No puedes realizar '})
+
+    
 }
