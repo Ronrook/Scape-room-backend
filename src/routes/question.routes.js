@@ -1,23 +1,17 @@
-const mongoose = require("mongoose");
-const express = require("express");
-const { Question } = require("../models/Question");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const QUESTIONS_RETURNED = 100;
+import * as questionsCtrl from '../controllers/questions.controller'
 
-router.get("/getquestions", (req, res) => {
-  Question.find({}, (err, docs) => {
-    const questionList = [];
-    const indexList = [];
-    while (indexList.length < QUESTIONS_RETURNED) {
-      let randomNumber = Math.floor(Math.random() * docs.length);
-      if (!indexList.includes(randomNumber)) {
-        questionList.push(docs[randomNumber]);
-        indexList.push(randomNumber);
-      }
-    }
-    res.send(questionList);
-  });
-});
+router.get('/', questionsCtrl.getQuestions)
+router.get('/:questionId', questionsCtrl.getQuestionById)
+
+router.put('/:questionId', questionsCtrl.updateQuestionById)
+
+router.delete('/:questionId', questionsCtrl.deleteQuestionById)
+
+router.post('/createquestion', questionsCtrl.createQuestion)
+
+
 
 module.exports = router;

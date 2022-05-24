@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const questionSchema = new mongoose.Schema({
+const questionSchema = new Schema({
   question_number: Number,
   group: String,
   question: String,
@@ -12,6 +12,4 @@ const questionSchema = new mongoose.Schema({
   versionKey: false
 });
 
-const Question = mongoose.model("Questions", questionSchema);
-
-module.exports = {Question};
+export default model("Question", questionSchema)
