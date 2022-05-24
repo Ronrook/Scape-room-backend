@@ -10,7 +10,6 @@ export const saveDataExcel = async (req, res) => {
     
 
     
-    
     // const excel = XLSX.readFile(
         
     //     'D:/Desktop/scape_room_backend/src/usuarios.xlsx'
@@ -18,7 +17,6 @@ export const saveDataExcel = async (req, res) => {
 
     // const nombreHoja = excel.SheetNames; 
     // const data = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
-
 
 
 
