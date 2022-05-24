@@ -1,27 +1,20 @@
-
-const XLSX = require('xlsx');
-import {  createUser }  from '../controllers/user.controller'
 import {  validateCreateuser }  from '../middlewares/verifySignup'
+import {  createUser }  from '../controllers/user.controller'
 const sendEmail = require('../libs/sendEmail')
 
 export const saveDataExcel = async (req, res) => {
     const data = req.body
 
-    
-
-    
     try {
 
         data.forEach(async user => {
 
-            const respuesta = await validateCreateuser(user)
-            
-            
+            const verify = await validateCreateuser(user)
 
-            if (!respuesta) {
-                const userSave = await  createUser(user)
-                console.log(userSave)
-                const resEmail = sendEmail(userSave)
+            if (!verify) {
+                const newUser = await  createUser(user)
+                console.log(newUser)
+                const resEmail = sendEmail(newUser)
                 console.log(resEmail)
             }
         });
