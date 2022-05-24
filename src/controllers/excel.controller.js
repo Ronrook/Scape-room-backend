@@ -7,8 +7,7 @@ const sendEmail = require('../libs/sendEmail')
 export const saveDataExcel = async (req, res) => {
     const data = req.body
 
-    console.log(req.body
-        )
+    
 
     
     
@@ -21,7 +20,7 @@ export const saveDataExcel = async (req, res) => {
     // const data = XLSX.utils.sheet_to_json(excel.Sheets[nombreHoja[0]]);
 
 
-    
+
 
     try {
 
