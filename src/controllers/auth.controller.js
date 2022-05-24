@@ -81,7 +81,6 @@ export const signin = async (req, res) =>{
         res.status(200).json({token})
     }
 
-
     if (userFound.isLoggedIn) return res.status(401).json({token: null, message: 'No puedes ingresar por segunda vez'})
 
 }
