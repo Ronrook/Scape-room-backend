@@ -51,6 +51,7 @@ export const signin = async (req, res) =>{
 
     if (!matchPassword) return res.status(401).json({token: null, message: 'password invalido'})
 
+    
     const token =  jwt.sign({id: userFound._id}, config.SECRET, {
         expiresIn: 3600 // 1 hora
     } )
