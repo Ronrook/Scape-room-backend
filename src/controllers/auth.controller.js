@@ -60,6 +60,7 @@ export const signin = async (req, res) =>{
 
 
     const role = await Role.find({_id: {$in: userFound.roles}})
+    
     console.log(userFound.isLoggedIn)
     
     if (!userFound.isLoggedIn) {
