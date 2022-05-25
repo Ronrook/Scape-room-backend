@@ -3,14 +3,16 @@ const router = Router();
 
 import * as questionsCtrl from '../controllers/questions.controller'
 
-router.get('/', questionsCtrl.getQuestions)
-router.get('/:questionId', questionsCtrl.getQuestionById)
+import { authJwt } from '../middlewares'
 
-router.put('/:questionId', questionsCtrl.updateQuestionById)
+router.get('/', [authJwt.verifyToken, authJwt.isAdmin], questionsCtrl.getQuestions)
+router.get('/:questionId', [authJwt.verifyToken, authJwt.isAdmin], questionsCtrl.getQuestionById)
 
-router.delete('/:questionId', questionsCtrl.deleteQuestionById)
+router.put('/:questionId', [authJwt.verifyToken, authJwt.isAdmin], questionsCtrl.updateQuestionById)
 
-router.post('/createquestion', questionsCtrl.createQuestion)
+router.delete('/:questionId', [authJwt.verifyToken, authJwt.isAdmin], questionsCtrl.deleteQuestionById)
+
+router.post('/createquestion', [authJwt.verifyToken, authJwt.isAdmin], questionsCtrl.createQuestion)
 
 
 
