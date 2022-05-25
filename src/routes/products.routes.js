@@ -11,7 +11,7 @@ router.get('/', [authJwt.verifyToken, authJwt.isAdmin], productsCtrl.getProducts
 
 router.get("/:productId", [authJwt.verifyToken], productsCtrl.getProductById);
 
-router.post("/", upload.single('image'), productsCtrl.createProduct);
+router.post("/",  [authJwt.verifyToken, authJwt.isAdmin, upload.single('image')], productsCtrl.createProduct);
 
 router.put("/:productId", [authJwt.verifyToken, authJwt.isAdmin], productsCtrl.updateProductById);
 
