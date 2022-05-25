@@ -12,11 +12,11 @@ const multer = require('multer') // declaramos multer para subir archivos
 
 const storage = multer.diskStorage({ // declaramos el storage para subir archivos 
     destination: (req, file, cb) => {   // declaramos la funcion destino
-    cb(null, './storage/imgs') // declaramos la ruta donde se guardaran los archivos
+    cb(null, './src/storage/imgs') // declaramos la ruta donde se guardaran los archivos
     }, 
     filename: (req, file, cb) => { // declaramos la funcion filename        
-        // const ext = file.originalname.split('.').pop();
-        cb(null, `${file.fieldname}-${Date.now()}`)
+        const ext = file.originalname.split('.').pop();
+        cb(null, `${file.fieldname}-${Date.now()}.${ext}`)
     }
 })
 
@@ -27,10 +27,4 @@ const upload = multer({ storage })
 
 module.exports = upload
 
-//Este es mi controlador 
-// app.post('/upload', upload.single('file'), (req, res) => {
-//    console.log('->', req.file)
-//    helperImg(req.file.path, `medium-resize-${req.file.filename}`, 500) //llamamos a la funcion HelperImg
-//    res.send({data: 'Imagen cargada'})
-// })
 
