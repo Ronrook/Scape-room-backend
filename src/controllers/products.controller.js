@@ -15,7 +15,7 @@ export const createProduct = async (req, res) => {
         });
     
 
-        console.log('antes de req.file')
+        
         if (req.file) {
             console.log('si trae req.file')
             const {filename} = req.file;
