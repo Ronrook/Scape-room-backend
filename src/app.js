@@ -11,6 +11,7 @@ import productRoutes from "./routes/products.routes";
 import authRoutes from "./routes/auth.routes";
 import usersRoutes from "./routes/user.routers"
 import questionsRoutes from "./routes/question.routes"
+import answersRoutes from "./routes/answer.routes"
 
 
 import excelRoutes from "./routes/excel.routes";
@@ -49,6 +50,7 @@ app.use('/api/products', productRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/users', usersRoutes)
 app.use('/api/questions', questionsRoutes)
+app.use('/api/answers', answersRoutes)
 app.use('/api/excel', excelRoutes)
 
 export default app;
