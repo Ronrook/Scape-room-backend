@@ -5,6 +5,6 @@ import * as answerCtrl from "../controllers/answers.controller"
 
 router.get('/', answerCtrl.getAnswer)
 
-router.post('/createanswer', answerCtrl.createAnswer)
+router.post('/createanswer/:questionId/:userId', answerCtrl.createAnswer)
 
 module.exports = router;

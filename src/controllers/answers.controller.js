@@ -1,12 +1,19 @@
+import Question from "../models/Question";
+import User from "../models/User";
 import Answer from "../models/Answer";
 
 export const createAnswer = async (req, res) => {
-    const { question_id, answer, use_tip, use_answer, user_id} = req.body;
-
+    const { answer, correct_answer, use_tip, use_answer} = req.body;
+    const question_id = await Question.findById(req.params['questionId']);
+    const user_id = await User.findById(req.params['userId']);
+    console.log(question_id)
+    console.log(user_id)
+    
     try {
         const newAnswer = new Answer({
             question_id,
             answer,
+            correct_answer,
             use_tip,
             use_answer,
             user_id,
