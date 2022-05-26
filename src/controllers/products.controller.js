@@ -4,7 +4,7 @@ import Product from '../models/Product'
 export const createProduct = async (req, res) => {
     const { name, category, price} = req.body;
 
-    
+
 
     try {
         const newProduct = new Product({
