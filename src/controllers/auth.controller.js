@@ -27,7 +27,6 @@ export const signUp = async (req, res) =>{
     }
 
 
-
     const user = {
         username: newUser.username,
         email: newUser.email,
