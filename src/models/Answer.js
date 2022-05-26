@@ -1,18 +1,14 @@
 import { Schema, model } from "mongoose";
 
 const answerSchema = new Schema({
-    question_id: {
-        type: Schema.Types.ObjectId,
-        ref: "Question"},
-    answer: String,
-    use_answer: Boolean,
-    use_tip: Boolean,
-    user_id: {
-        type: Schema.Types.ObjectId,
-        ref: "User"},
+  question_id: String,
+  answer: String,
+  use_tip: Boolean,
+  use_answer: Boolean,
+  user_id: String,
 }, {
-    timestamps: true,
-    versionKey: false
+  timestamps: true,
+  versionKey: false
 });
 
 export default model("Answer", answerSchema)

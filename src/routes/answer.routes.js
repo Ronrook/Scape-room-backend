@@ -1,6 +1,10 @@
 import { Router } from "express";
 const router = Router();
 
-import * as answerCtrl from '../controllers/answer.controller'
+import * as answerCtrl from "../controllers/answers.controller"
 
-router.post('/:questionId/:userId', answerCtrl.createAnswer)
+router.get('/', answerCtrl.getAnswer)
+
+router.post('/createanswer', answerCtrl.createAnswer)
+
+module.exports = router;
