@@ -2,6 +2,7 @@ import express from "express";
 const cors = require("cors"); 
 import morgan from "morgan";
 import config from "./config";
+const multer = require('multer')
 
 import pkg from "../package.json";
 
@@ -22,6 +23,7 @@ import excelRoutes from "./routes/excel.routes";
 
 const app = express()
 
+// app.use(multer())
 app.use(cors())
 createRoles()
 
@@ -29,6 +31,8 @@ createRoles()
 
 app.use(morgan("dev"));
 app.use(express.json());
+
+app.use('/public', express.static(`${__dirname}/storage/imgs`))
 
 // Settings
 app.set("pkg", pkg);

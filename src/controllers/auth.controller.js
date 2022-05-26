@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import config from '../config'
 import Role from '../models/Role';
 const createPassword = require('../libs/createPassword')
+const sendEmail = require('../libs/sendEmail')
 
 export const signUp = async (req, res) =>{
     const passwordRandom = createPassword()
@@ -26,7 +27,6 @@ export const signUp = async (req, res) =>{
     }
 
 
-
     const user = {
         username: newUser.username,
         email: newUser.email,
@@ -34,6 +34,8 @@ export const signUp = async (req, res) =>{
     } 
 
     await newUser.save();
+    sendEmail(user)
+    
 
     res.status(200).json(user)
 }
@@ -55,7 +57,6 @@ export const signin = async (req, res) =>{
     const token =  jwt.sign({id: userFound._id}, config.SECRET, {
         expiresIn: 3600 // 1 hora
     } )
-
 
     res.status(200).json({token})
 
