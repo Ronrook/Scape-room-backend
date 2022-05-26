@@ -1,10 +1,10 @@
 import { Router } from "express";
 const router = Router();
 import * as authCtrl from "../controllers/auth.controller";
-import {verifySignup, authJwt} from '../middlewares'
+import {verifySignup, authJwt, verifySigin } from '../middlewares'
 
 router.post('/signup',  [authJwt.verifyToken, authJwt.isAdmin, verifySignup.checkRolesExisted, verifySignup.checkDuplicateUsernameOrEmail], authCtrl.signUp)
-router.post('/signin', authCtrl.signin)
+router.post('/signin', [verifySigin.isLoggedIn], authCtrl.signin)
 
 
 
