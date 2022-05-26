@@ -36,7 +36,6 @@ export const signUp = async (req, res) =>{
     await newUser.save();
     sendEmail(user)
     
-    
 
     res.status(200).json(user)
 }
