@@ -15,5 +15,4 @@ router.delete('/:questionId', [authJwt.verifyToken, authJwt.isAdmin], questionsC
 router.post('/createquestion', [authJwt.verifyToken, authJwt.isAdmin], questionsCtrl.createQuestion)
 
 
-
 module.exports = router;
