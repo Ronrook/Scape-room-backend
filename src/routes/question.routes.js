@@ -5,8 +5,8 @@ import * as questionsCtrl from '../controllers/questions.controller'
 
 import { authJwt } from '../middlewares'
 
-router.get('/', [authJwt.verifyToken, authJwt.isAdmin], questionsCtrl.getQuestions)
-router.get('/:questionId', [authJwt.verifyToken, authJwt.isAdmin], questionsCtrl.getQuestionById)
+router.get('/', [authJwt.verifyToken], questionsCtrl.getQuestions)
+router.get('/:questionId', [authJwt.verifyToken], questionsCtrl.getQuestionById)
 
 router.put('/:questionId', [authJwt.verifyToken, authJwt.isAdmin], questionsCtrl.updateQuestionById)
 
