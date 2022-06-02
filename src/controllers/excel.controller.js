@@ -6,7 +6,6 @@ export const saveDataExcel = async (req, res) => {
     const data = req.body;
 
     
-    
     try {
 
         data.forEach(async user => {
@@ -15,7 +14,7 @@ export const saveDataExcel = async (req, res) => {
             console.log(verify)
 
             if (!verify) {
-                const newUser = await  createUser(user)
+                const newUser = await createUser(user)
                 console.log(newUser)
                 const resEmail = sendEmail(newUser)
                 console.log(resEmail)

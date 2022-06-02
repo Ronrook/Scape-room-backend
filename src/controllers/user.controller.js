@@ -43,7 +43,6 @@ export const createUser = async (req, res) =>{
 }
 
 
-
 export const getUserByToken = async (req, res) => {
     try {
         const token = req.headers["x-access-token"];

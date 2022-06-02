@@ -1,11 +1,8 @@
 import User from '../models/User'
 
 
-
-
 export const isLoggedIn = async (req, res, next) => {
     
-
     try {
         const userFound = await User.findOne({email: req.body.email}).populate("roles")
         
