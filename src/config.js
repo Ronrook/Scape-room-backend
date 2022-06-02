@@ -1,4 +1,7 @@
+
+// Environment variables
 import { config } from "dotenv";
+// Configuration the .env file
 config()
 
 

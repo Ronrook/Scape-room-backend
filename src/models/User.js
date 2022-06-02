@@ -10,28 +10,28 @@ const userSchema = new Schema({
     name: {
         type: String,
         required: true,
-        },
-        username: {
+    },
+    username: {
         type: String,
         unique: true,
-        },
-        email: {
+    },
+    email: {
         type: String,
         unique: true,
-        },
-        password: {
+    },
+    password: {
         type: String
-        },
-        isLoggedIn: {
+    },
+    isLoggedIn: {
         type: Boolean,
         default: false
-        },
-        roles: [
+    },
+    roles: [
         {
             type: Schema.Types.ObjectId,
             ref: "Role",
         },
-        ],
+    ],
     },
     {
     timestamps: true,

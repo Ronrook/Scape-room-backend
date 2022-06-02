@@ -5,7 +5,6 @@ const sendEmail = require('../libs/sendEmail')
 export const saveDataExcel = async (req, res) => {
     const data = req.body;
 
-    
     try {
 
         data.forEach(async user => {
@@ -22,9 +21,7 @@ export const saveDataExcel = async (req, res) => {
         });
         
     } catch (error) {
-        
         return res.status(401).json({message: 'error en la carga de datos'})
-        
     }
     
     
