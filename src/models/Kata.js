@@ -1,0 +1,31 @@
+import { Schema, model } from "mongoose";
+
+
+
+const kataSchema = new Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String
+    },
+    solution: {
+        type: String,
+        required: true,
+    },
+    group: {
+        type: String,
+    },
+    creator_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
+},  {
+    timestamps: true,
+    versionKey: false,
+});
+
+
+
+export default model("Kata", kataSchema);

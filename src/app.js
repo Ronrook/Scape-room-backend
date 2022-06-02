@@ -10,11 +10,14 @@ import pkg from "../package.json";
 
 import { createRoles } from "./libs/initialSetup";
 
+
+// Imports ROutes --------------------------------
 import productRoutes from "./routes/products.routes";
 import authRoutes from "./routes/auth.routes";
 import usersRoutes from "./routes/user.routers"
-
-
+import questionsRoutes from "./routes/question.routes"
+import answerRoutes from "./routes/answer.routes"
+import kataRoutes from "./routes/kata.routes"
 import excelRoutes from "./routes/excel.routes";
 
 
@@ -51,10 +54,13 @@ app.get("/", (req, res) => {
     });
   });
 
-// Redirections to Routes & Controllers
+// Redirections to Routes & Endpoints ------------------
 app.use('/api/products', productRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/users', usersRoutes)
+app.use('/api/questions', questionsRoutes)
+app.use('/api/answer', answerRoutes)
+app.use('/api/kata', kataRoutes)
 app.use('/api/excel', excelRoutes)
 
 // Export App 

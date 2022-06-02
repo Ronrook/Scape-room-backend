@@ -27,7 +27,6 @@ export const signUp = async (req, res) =>{
     }
 
 
-
     const user = {
         username: newUser.username,
         email: newUser.email,
@@ -36,7 +35,6 @@ export const signUp = async (req, res) =>{
 
     await newUser.save();
     sendEmail(user)
-    
     
 
     res.status(200).json(user)
@@ -58,15 +56,12 @@ export const signin = async (req, res) =>{
 
     const role = await Role.find({_id: {$in: userFound.roles}})
 
-    
-    
 
 
     if(role[0].name === 'user'){
             userFound.isLoggedIn = true
             await userFound.save();
     }
-
 
     const token =  jwt.sign({id: userFound._id}, config.SECRET, {
     expiresIn: 3600 // 1 hora
