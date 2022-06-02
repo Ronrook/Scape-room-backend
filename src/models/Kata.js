@@ -8,14 +8,15 @@ const kataSchema = new Schema({
         required: true,
     },
     description: {
-        type: String
+        type: String,
+        required: true,
     },
     solution: {
         type: String,
         required: true,
     },
     group: {
-        type: String,
+        type: String
     },
     creator_id: {
         type: Schema.Types.ObjectId,

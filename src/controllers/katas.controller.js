@@ -9,7 +9,7 @@ export const createKata = async (req, res) => {
             description,
             solution,
             group,
-            creator_id
+            creator_id,
         });
     
         const kataSaved = await newKata.save();
@@ -19,7 +19,7 @@ export const createKata = async (req, res) => {
         console.log(error);
         return res.status(500).json(error);
     }
-}
+};
 
 
 export const getKatas = async (req, res) => {

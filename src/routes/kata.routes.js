@@ -7,11 +7,11 @@ import { authJwt } from "../middlewares";
 
 
 
-router.get('/getKatas', [authJwt.verifyToken, authJwt.isAdmin], katasCtrl.getKatas)
+router.get("/", [authJwt.verifyToken, authJwt.isAdmin], katasCtrl.getKatas)
 
 router.get("/:kataId", [authJwt.verifyToken], katasCtrl.getKataById);
 
-router.post("/createKata",  [authJwt.verifyToken, authJwt.isAdmin],  katasCtrl.createKata);
+router.post("/",  [authJwt.verifyToken, authJwt.isAdmin],  katasCtrl.createKata);
 
 router.put("/:kataId", [authJwt.verifyToken, authJwt.isAdmin], katasCtrl.updateKataById);
 
