@@ -5,10 +5,6 @@ const sendEmail = require('../libs/sendEmail')
 export const saveDataExcel = async (req, res) => {
     const data = req.body;
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> f279547ad51eea71c51ba54b1c5724be5a6dd23f
     try {
 
         data.forEach(async user => {
