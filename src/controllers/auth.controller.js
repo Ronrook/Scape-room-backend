@@ -58,10 +58,10 @@ export const signin = async (req, res) =>{
     let  expiresIn;
 
     if(role[0].name === 'user'){
-            userFound.isLoggedIn = true
-            await userFound.save();
-            expiresIn = 3600 // 1 hora
-            
+        userFound.isLoggedIn = true
+        await userFound.save();
+        expiresIn = 3600 // 1 hora
+
     } else {
         expiresIn = 86400  //  segundos / 60 minutos = 1440 minutos = 24 horas
 
@@ -72,6 +72,5 @@ export const signin = async (req, res) =>{
     } )
 
     res.status(200).json({token})
-
 
 }
