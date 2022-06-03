@@ -12,7 +12,6 @@ import { createRoles } from "./libs/initialSetup";
 
 
 // Imports ROutes --------------------------------
-import productRoutes from "./routes/products.routes";
 import authRoutes from "./routes/auth.routes";
 import usersRoutes from "./routes/user.routers"
 import questionsRoutes from "./routes/question.routes"
@@ -38,7 +37,7 @@ createRoles()
 app.use(morgan("dev"));
 app.use(express.json());
 
-app.use('/public', express.static(`${__dirname}/storage/imgs`))
+
 
 // Settings
 app.set("pkg", pkg);
@@ -56,7 +55,6 @@ app.get("/", (req, res) => {
   });
 
 // Redirections to Routes & Endpoints ------------------
-app.use('/api/products', productRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/users', usersRoutes)
 app.use('/api/questions', questionsRoutes)
