@@ -5,14 +5,19 @@ const answerSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Question'
     },
-    correct_answer: Boolean,
-    answer: String,
+    question: { type: String
+
+    },
+    correct_answer: String,
+    user_answer: Boolean,
     use_tip: Boolean,
     use_answer: Boolean,
     user_id: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    user: { type: String
+    },
 }, {
     timestamps: true,
     versionKey: false

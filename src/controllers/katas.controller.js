@@ -1,15 +1,18 @@
 import Kata from "../models/Kata";
 
 export const createKata = async (req, res) => {
-    const { name, description, solution, group, creator_id} = req.body;
+    const { name, description, baseKata, solution, group, creator_id, creator_name} = req.body;
 
     try {
+        // Create / Insert new Kata
         const newKata = new Kata({
             name,
             description,
+            baseKata,
             solution,
             group,
             creator_id,
+            creator_name,
         });
     
         const kataSaved = await newKata.save();
@@ -30,12 +33,14 @@ export const getKatas = async (req, res) => {
 
 export const getKataById = async (req, res) => {
     const { kataId } = req.params;
+    // Search Kata By ID
     const kata = await Kata.findById(kataId);
     res.status(200).json(kata);
 
 };
 
 export const updateKataById = async (req, res) => {
+    // Update Kata
     const updatedKata = await Kata.findByIdAndUpdate(
         req.params.kataId,
         req.body,
@@ -49,6 +54,7 @@ export const updateKataById = async (req, res) => {
 export const deleteKataById = async (req, res) => {
     const {  kataId } = req.params;
 
+     // Delete Kata BY ID
     await Kata.findByIdAndDelete(kataId);
 
     res.status(204).json();
