@@ -3,7 +3,7 @@ import User from "../models/User";
 import Answer from "../models/Answer";
 
 export const createAnswer = async (req, res) => {
-    const {  user_answer, use_tip, use_answer} = req.body;
+    const {  user_answer, use_tip, use_answer} = req.body 
     const { questionId, userId } = req.params;
 
     const question = await Question.findById(questionId);
