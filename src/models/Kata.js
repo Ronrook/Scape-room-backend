@@ -27,6 +27,4 @@ const kataSchema = new Schema({
     versionKey: false,
 });
 
-
-
 export default model("Kata", kataSchema);
