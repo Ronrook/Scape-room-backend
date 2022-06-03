@@ -56,15 +56,22 @@ export const signin = async (req, res) =>{
 
     const role = await Role.find({_id: {$in: userFound.roles}})
 
-
+    let  expiresIn;
 
     if(role[0].name === 'user'){
             userFound.isLoggedIn = true
             await userFound.save();
+            expiresIn = 3600 // 1 hora
+
+
+
+    } else {
+        expiresIn = 86400  //  segundos / 60 minutos = 1440 minutos = 24 horas
+
     }
 
     const token =  jwt.sign({id: userFound._id}, config.SECRET, {
-    expiresIn: 3600 // 1 hora
+        expiresIn
     } )
 
     res.status(200).json({token})
