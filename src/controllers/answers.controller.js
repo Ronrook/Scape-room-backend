@@ -34,5 +34,4 @@ export const createAnswer = async (req, res) => {
 export const getAnswer = async (req, res) => {
     const answer = await Answer.find();
     return res.json(answer);
-
 };
