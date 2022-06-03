@@ -17,7 +17,6 @@ export const signUp = async (req, res) =>{
     })
 
 
-
     if (roles){
         const foundRoles = await Role.find({name: {$in: roles}})
         newUser.roles = foundRoles.map(role => role._id)
