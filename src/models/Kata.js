@@ -11,6 +11,10 @@ const kataSchema = new Schema({
         type: String,
         required: true,
     },
+    baseKata: {
+        type: String,
+        required: true,
+    },
     solution: {
         type: String,
         required: true,
@@ -19,6 +23,10 @@ const kataSchema = new Schema({
         type: String
     },
     creator_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    creator_name: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     }
