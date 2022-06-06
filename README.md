@@ -57,6 +57,7 @@ ___
 
 ```bash
 git clone https://github.com/Ronrook/Scape-room-backend
+npm install
 
 ```
 
